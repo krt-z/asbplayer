@@ -80,7 +80,6 @@ export default class TabRegistry {
             chrome.tabs.create(
                 {
                     active: false,
-                    selected: false,
                     url: (await this.settings.get(['asbplayerUrl'])).asbplayerUrl,
                     index: currentTab.index + 1
                 },

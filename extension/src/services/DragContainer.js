@@ -1,3 +1,5 @@
+import { bufferToBase64 } from './Base64';
+
 export default class DragContainer {
 
     constructor(video) {
@@ -9,7 +11,7 @@ export default class DragContainer {
             return;
         }
 
-        this.dropListener = (e) => {
+        this.dropListener = async (e) => {
             e.preventDefault();
 
             this.dragEnterElement = null;
@@ -41,13 +43,13 @@ export default class DragContainer {
                 sender: 'asbplayer-video',
                 message: {
                     command: 'sync',
-                    subtitles: files
-                        .map((f) => {
+                    subtitles: await Promise.all(files
+                        .map(async (f) => {
                             return {
                                 name: f.name,
-                                fileUrl: URL.createObjectURL(f)
+                                base64: await bufferToBase64(await f.arrayBuffer())
                             };
-                        })
+                        }))
                 },
                 src: this.video.src
             });

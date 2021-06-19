@@ -42,7 +42,6 @@ window.addEventListener('load', (event) => {
         }
 
         bindings.length = 0;
-
         clearInterval(interval);
     });
 });
