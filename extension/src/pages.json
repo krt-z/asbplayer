@@ -29,6 +29,12 @@
             "script": "amazon-prime-page.js",
             "path": "/gp/video/detail",
             "autoSyncEnabled": false
+        },
+        {
+            "host": "www\\.hulu\\..+",
+            "script": "hulu-page.js",
+            "path": "/watch",
+            "autoSyncEnabled": true
         }
     ]
 }
